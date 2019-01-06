@@ -1,0 +1,6 @@
+venv/
+ml-works/udacity_ml_course/tools/maildir/
+.idea/
+input/
+.vscode
+.ipynb_checkpoints
