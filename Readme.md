@@ -4,7 +4,7 @@
 
 - **ml-works**- `Machine Learning Work` (Course Items partially included)
 
-- **input**- `Contains datasets for many many code snippets and notebooks`
+- **input**- `Contains datasets for many many code snippets and notebooks`. Excluded in git as the datasets exceeded the upload limits for git.
 
 - **Kaggle Codes**- `Contains code from Kaggle`
 
