@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Ant buildfile for building the TET connector for Apache Tika.
+    
+    $Id: build.xml,v 1.7 2015/07/30 11:40:36 stm Exp $
+-->
+<project name="tet-tika" default="jar">
+	<!--
+                For optionally overriding the default properties with a
+                platform-specific "unix.properties" or "windows.properties"
+                file and a generic "build.properties" file.
+	-->
+	<condition property="os.family" value="unix">
+		<or>
+			<os family="unix"/>
+			<os family="mac"/>
+		</or>
+	</condition>
+
+	<condition property="os.family" value="windows">
+		<os family="windows"/>
+	</condition>
+
+	<property file="${os.family}.properties"/>
+	<property file="build.properties"/>
+
+	<property name="tet-tika.jar" value="tet-tika.jar"/>
+	<property name="tet.java.dir" value="../../bind/java" />
+	<property name="tet.jni.dir" value="${tet.java.dir}" />
+	<property name="tet.jar" value="${tet.java.dir}/TET.jar" />
+	<property name="tika-app.jar" location="tika-app-1.8.jar"/>
+
+	<property name="src.dir" value="src" />
+	<property name="bin.dir" value="bin" />
+	<property name="resources.dir" value="resources" />
+
+	<property name="parser.configfile.dir" value="META-INF/services"/>
+	<property name="parser.configfile" value="${parser.configfile.dir}/org.apache.tika.parser.Parser"/>
+
+	<property name="tet.searchpath" value="../../resource/cmap ../../resource" />
+
+	<property name="test.inputfile" value="../../bind/data/TET-datasheet.pdf"/>
+	<property name="test.outputfile" value="api-test-output.txt"/>
+	<property name="test.password" value=""/>
+
+	<path id="build-classpath">
+		<pathelement location="${tet.jar}" />
+		<pathelement location="${tika-app.jar}" />
+	</path>
+
+	<!-- Including resources.dir in the classpath for running the tests,
+	     to override the built-in PDF parser of Tika with the TET PDF parser. -->
+	<path id="run-classpath">
+		<path refid="build-classpath" />
+		<pathelement location="${tet-tika.jar}" />
+		<pathelement location="${resources.dir}" />
+	</path>
+
+	<target name="jar" depends="compile">
+		<jar destfile="${tet-tika.jar}" basedir="${bin.dir}" />
+	</target>
+
+	<target name="compile">
+		<mkdir dir="${bin.dir}"/>
+		<javac srcdir="${src.dir}" destdir="${bin.dir}" includeantruntime="no">
+			<classpath refid="build-classpath" />
+		</javac>
+	</target>
+
+	<target name="test" depends="jar">
+		<java classname="org.apache.tika.cli.TikaCLI" fork="true">
+			<jvmarg value="-Djava.library.path=${tet.jni.dir}" />
+			<jvmarg value="-Dtet.searchpath=${tet.searchpath}" />
+			<classpath refid="run-classpath" />
+			<arg value="${test.inputfile}" />
+		</java>
+	</target>
+
+	<target name="api-test" depends="jar">
+		<java classname="com.pdflib.tet.tika.TikaApiTest" fork="true">
+			<jvmarg value="-Djava.library.path=${tet.jni.dir}" />
+			<jvmarg value="-Dtet.searchpath=${tet.searchpath}" />
+			<classpath refid="run-classpath" />
+			<arg value="${test.inputfile}" />
+			<arg value="${test.outputfile}" />
+			<arg value="${test.password}" />
+		</java>
+	</target>
+
+	<target name="clean">
+		<delete file="${tet-tika.jar}" />
+		<delete includeemptydirs="true">
+			<fileset dir="${bin.dir}" includes="**/*" />
+		</delete>
+	</target>
+</project>

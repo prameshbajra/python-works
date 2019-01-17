@@ -1,0 +1,62 @@
+======================
+What's new in TET 5.1?
+======================
+
+The features below are new or considerably improved in TET 5.1:
+
+- numbered and unnumbered lists are identified and expressed in TETML
+  (with page option "structureanalysis={list=true}")
+- repair mode for damaged input documents with cross-reference streams
+- improved workarounds for non-conforming input documents
+- improved performance for disabled image, color, and vector engines
+  as well as for documents without layers
+- reduced memory requirements
+- other bug fixes
+- updated language bindings
+- pCOS interface updated to version 11
+
+
+======================
+What's new in TET 5.0?
+======================
+
+The features below are new or considerably improved in TET 5.0.
+
+Text retrieval:
+- retrieve fill and stroke color of text
+- improved layout detection
+- honor vector graphics to improve page and table layout recognition
+- support vertical font metrics for CJK text
+
+Image retrieval:
+- significantly enhanced merging of fragmented images, e.g. for rotated images
+- improved image handling for many special cases and rare PDF image flavors
+- extract image masks and soft masks
+- merge and convert JPEG 2000-compressed images
+- preserve spot color in extracted TIFF images
+- restrict image extraction to user-selected area
+- collect XMP image metadata stored in non-standard locations by InDesign
+
+Page processing:
+- optionally ignore artifacts (irrelevant content) in Tagged PDF
+- honor layers (optional content) to avoid extraction of invisible content
+- honor clipping paths to avoid extraction of invisible content
+- check whether an area on the page is empty or contains any text, image,
+  or vector graphics
+
+TETML:
+- TETML includes fill and stroke color of glyphs
+- TETML includes information about interactive elements including annotations,
+  form fields, bookmarks, actions, JavaScript, signatures, etc.
+- TETML includes color space and ICC profile details
+- TETML includes information about layers and page labels
+
+pCOS PDF information retrieval:
+- pCOS pseudo objects for ICC profile details and image masking properties
+- pCOS pseudo objects for form fields
+
+Other areas:
+- additional checks and heuristics for damaged and non-conforming PDF input
+- updated TET language bindings, programming samples and TET connectors
+- new options for improved PDF processing control
+- many improvements in existing TET features

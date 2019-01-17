@@ -1,0 +1,38 @@
+[------------------------------------------------------------------------------]
+[ TET 5.1  python binding on Linux-x86_64 (le) 2019-01-17 11:50:24             ]
+[ Classes: api=1 warning=1                                                     ]
+[ Enter in vi to compile it:                                                   ]
+[ %s/)$/);/g   and   %s/"(NULL)"/NULL/g   and   %s/\[[^]]*\]//g                ]
+[ Program should run on a little-endian platform                               ]
+[------------------------------------------------------------------------------]
+/* TET_utf16_to_utf8(tet_0x562a301bc570, "t\000e\000t\000m\000l\000=\000{\000e\000l\000e\000m\000e\000n\000t\000s\000=\000{\000d\000o\000c\000i\000n\000f\000o\000=\000t\000r\000u\000e\000 \000d\000o\000c\000x\000m\000p\000=\000t\000r\000u\000e\000 \000o\000p\000t\000i\000o\000n\000s\000=\000t\000r\000u\000e\000}\000}\000", 112, NULL) */
+/* ["tetml={elements={docinfo=true docxmp=true options=true}}", size=0] */
+
+TET_open_document(tet_0x562a301bc570, ".\000.\000/\000i\000n\000p\000u\000t\000/\000P\000a\000n\000d\000a\000s\000P\000y\000t\000h\000o\000n\000F\000o\000r\000D\000a\000t\000a\000S\000c\000i\000e\000n\000c\000e\000.\000p\000d\000f\000", 78, "tetml={elements={docinfo=true docxmp=true options=true}}")
+[New category:resource "SearchPath:/usr/local/PDFlib"]
+[New category:resource "SearchPath:/usr/local/PDFlib/TET"]
+[New category:resource "SearchPath:/usr/local/PDFlib/TET/5.1"]
+[New category:resource "SearchPath:/usr/local/PDFlib/TET/5.1/resource/cmap"]
+[New category:resource "SearchPath:/usr/local/PDFlib/TET/5.1/resource/codelist"]
+[New category:resource "SearchPath:/usr/local/PDFlib/TET/5.1/resource/fonts"]
+[New category:resource "SearchPath:/usr/local/PDFlib/TET/5.1/resource/glyphlst"]
+[New category:resource "SearchPath:/usr/local/PDFlib/TET/5.1/resource/icc"]
+[New category:resource "SearchPath:/home/codemantra/PDFlib"]
+[New category:resource "SearchPath:/home/codemantra/PDFlib/TET"]
+[New category:resource "SearchPath:/home/codemantra/PDFlib/TET/5.1"]
+[New category:resource "SearchPath:/home/codemantra/PDFlib/TET/5.1/resource/cmap"]
+[New category:resource "SearchPath:/home/codemantra/PDFlib/TET/5.1/resource/codelist"]
+[New category:resource "SearchPath:/home/codemantra/PDFlib/TET/5.1/resource/fonts"]
+[New category:resource "SearchPath:/home/codemantra/PDFlib/TET/5.1/resource/glyphlst"]
+[New category:resource "SearchPath:/home/codemantra/PDFlib/TET/5.1/resource/icc"]
+[Open document]
+[0]
+/* TET_utf16_to_utf8(tet_0x562a301bc570, "d\000o\000c\000s\000t\000y\000l\000e\000=\000p\000a\000p\000e\000r\000s\000", 30, NULL) */
+/* ["docstyle=papers", size=0] */
+TET_process_page(tet_0x562a301bc570, 0, 1, "docstyle=papers")
+[Open page #1]
+[Close page]
+[1]
+/* TET_utf16_to_utf8(tet_0x562a301bc570, "", 0, NULL) */
+/* ["", size=0] */
+TET_get_tetml(tet_0x562a301bc570, 0, "")

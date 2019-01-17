@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Ant build file to run the Solr XSLT example.
+    $Id: build.xml,v 1.5 2015/08/03 11:50:11 stm Exp $
+-->
+<project name="tet-solr" default="solr">
+	<property file="build.properties" />
+
+	<property name="bin.dir" location="../../bin" />
+	<property name="tet.exe" location="${bin.dir}/tet" />
+	
+	<property name="data.dir" location="../../bind/data" />
+	<property name="input.pdf" location="${data.dir}/TET-datasheet.pdf" />
+        <basename property="input.basename" file="${input.pdf}" suffix=".pdf" /> 
+
+	<property name="tetmlfile" value="${input.basename}.tetml" />
+	<property name="output.xml" value="${input.basename}.xml" />
+
+	<target name="solr" depends="tetml">
+		<xslt in="${tetmlfile}" style="solr.xsl" out="${output.xml}"/>
+	</target>
+
+	<!-- Generate wordplus TETML output -->
+	<target name="tetml">
+		<exec executable="${tet.exe}">
+			<arg value="--tetml" />
+			<arg value="wordplus" />
+			<arg value="-o" />
+			<arg value="${tetmlfile}" />
+			<arg value="${input.pdf}" />
+		</exec>
+	</target>
+
+	<target name="clean">
+		<delete file="${output.xml}" />
+		<delete file="${tetmlfile}" />
+	</target>
+</project>
