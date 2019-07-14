@@ -1,5 +1,5 @@
-venv/
-ml-works/udacity_ml_course/tools/maildir/
+venv
+ml-works/udacity_ml_course
 .idea/
 input/
 .vscode
